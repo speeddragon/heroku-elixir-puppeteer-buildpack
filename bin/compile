@@ -168,9 +168,9 @@ topic "Rewrite package-config files"
 find $BUILD_DIR/.apt -type f -ipath '*/pkgconfig/*.pc' | xargs --no-run-if-empty -n 1 sed -i -e 's!^prefix=\(.*\)$!prefix='"$BUILD_DIR"'/.apt\1!g'
 
 export PATH=$PATH:/tmp/app/.apt/usr/bin/
-npm i puppeteer-pdf -g
 
-find / -name puppeteer-pdf
+#npm i puppeteer-pdf -g
+#find / -name puppeteer-pdf
 
 # deprecated_hook, here for backwards compatibility
 post_compile_hook
