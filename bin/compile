@@ -104,7 +104,7 @@ mkdir -p "$APT_STATE_DIR/lists/partial"
 
 APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
 
-case "$STACK" in
+case "$CF_STACK" in
   "cedar-14")
     APT_FLAGS="--force-yes"
     ;;

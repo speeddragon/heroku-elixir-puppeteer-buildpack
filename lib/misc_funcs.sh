@@ -38,7 +38,7 @@ function load_config() {
   fi
 
   output_line "Will use the following versions:"
-  output_line "* Stack ${STACK}"
+  output_line "* Stack ${CF_STACK}"
   output_line "* Erlang ${erlang_version}"
   output_line "* Elixir ${elixir_version[0]} ${elixir_version[1]}"
 }
@@ -70,17 +70,17 @@ function export_mix_env() {
 }
 
 function check_stack() {
-  if [ "${STACK}" = "cedar" ]; then
+  if [ "${CF_STACK}" = "cedar" ]; then
     echo "ERROR: cedar stack is not supported, upgrade to cedar-14"
     exit 1
   fi
 
-  if [ ! -f "${cache_path}/stack" ] || [ $(cat "${cache_path}/stack") != "${STACK}" ]; then
+  if [ ! -f "${cache_path}/stack" ] || [ $(cat "${cache_path}/stack") != "${CF_STACK}" ]; then
     output_section "Stack changed, will rebuild"
     rm -rf ${cache_path}/*
   fi
 
-  echo "${STACK}" > "${cache_path}/stack"
+  echo "${CF_STACK}" > "${cache_path}/stack"
 }
 
 function clean_cache() {
